@@ -17,7 +17,7 @@ var downloadAction = function(body) {
     finalLinks.push(body);
     //episode++;
 
-    if (episode === 2) {//(finalLinks.length === 19) {
+    if (episode === 14) {//(finalLinks.length === 19) {
       debug.log('DONE.....');
       debug.log('LINKS:');
       debug.log(finalLinks);
@@ -50,7 +50,7 @@ var DownloadVideo = function(title) {
   filestube.getLinks(
     title,
     {
-      type: 'mkv'
+      //type: 'mkv'
     },
     function(urls) {
       globalLinks = urls;
@@ -59,9 +59,9 @@ var DownloadVideo = function(title) {
   );
 };
 
-var titles = 'House of Cards S02E';
+var titles = 'Suits S03E';
 // var maxEpisodes = 9;
-var episode = 1;
+var episode = 14;
 
 DownloadVideo(titles + episode);
 
