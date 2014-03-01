@@ -36,12 +36,12 @@ var parseLine = function(line) {
 
       // if no '|', the array has just one element
       var show = {
-        name: nameSplit[0]
+        title: nameSplit[0]
       }
 
       // if '|' was there, then we have 2 elements
       if (nameSplit.length > 1) {
-        show.name = nameSplit[1];
+        show.title = nameSplit[1];
         show.wiki = nameSplit[0];
       }
 

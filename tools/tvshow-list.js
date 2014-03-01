@@ -1,5 +1,10 @@
 var wikiList = require('./wiki-list');
+var omdbApi = require('./omdb');
 
 wikiList(function(list){
-  console.log(list.length);
+  list.forEach(function(show){
+    omdbApi(show, function(newShow) {
+      console.log(newShow);
+    });
+  })
 });
