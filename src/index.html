@@ -10,20 +10,10 @@
     <script>
     var Nedb = require('nedb'),
         planets = new Nedb({ filename: 'database.db', autoload: true });
-
-
-        planets.insert({ _id: '1', name: 'Earth', satellites: 1, elo: [1,2, 3], yo: {e: 'lo'} }, function (err) {
-          planets.insert({ name: 'Mars', satellites: 2 }, function (err) {
-            planets.insert({ name: 'Jupiter', satellites: 67 }, function (err) {
-
-              // Now we can query it the usual way
               planets.find({ satellites: 1 }, function (err, docs) {
                 document.body.innerHTML = JSON.stringify(docs) + '<br/>' + docs[0].yo.e;
                 // docs is an array containing Earth and Mars
               });
-            });
-          });
-        });
     </script>
   </body>
 </html>
