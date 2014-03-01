@@ -3,7 +3,12 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     exec: {
-      command : 'open webkitbuilds/releases/hodutu/mac/hodutu.app'
+      open: {
+        command : 'open webkitbuilds/releases/hodutu/mac/hodutu.app'
+      },
+      generate_list: {
+        command : 'node tools/tvshow-list.js'
+      }
     },
     nodewebkit: {
       options: {
@@ -21,7 +26,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('default', ['build', 'run']);
-  grunt.registerTask('run', ['exec']);
+  grunt.registerTask('run', ['exec:open']);
   grunt.registerTask('build', ['nodewebkit']);
+
+  grunt.registerTask('generate-list', ['exec:generate_list']);
 
 };

@@ -17,7 +17,7 @@ wikiList(function(list) {
     },
     function() {
       tvShowList.insert(finalList, function(err){
-        console.log('---- ERR:', err);
+        console.log('ERROR:', err);
       });
     }
   );
