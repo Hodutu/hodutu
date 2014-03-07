@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HODUTU</title>
+    <title> .hodutu. </title>
+    <link href="style/style.css" media="all" rel="stylesheet" type="text/css"/>
   </head>
   <body>
-    <h1>
-      HODUTU
-    </h1>
+    <input class="search" type="text"/>
     <script>
-    var Nedb = require('nedb'),
-        planets = new Nedb({ filename: 'database.db', autoload: true });
-              planets.find({ satellites: 1 }, function (err, docs) {
-                document.body.innerHTML = JSON.stringify(docs) + '<br/>' + docs[0].yo.e;
-                // docs is an array containing Earth and Mars
-              });
     </script>
   </body>
 </html>
