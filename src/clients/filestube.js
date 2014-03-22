@@ -1,4 +1,3 @@
-var request = require('request');
 var jsdom = require('jsdom');
 
 var Filestube_API = (function() {
@@ -12,7 +11,7 @@ var Filestube_API = (function() {
       reqOptions = '&select=' + options.type;
     }
 
-    console.log(url + term + reqOptions);
+    console.log('Staring link:', url + term + reqOptions);
     jsdom.env({
       url: url + term + reqOptions,
       done: function(err, window) {
