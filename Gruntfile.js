@@ -2,6 +2,11 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    execute: {
+        target: {
+            src: ['src/main.js']
+        }
+    },
     browserify: {
       dist: {
         files: {
@@ -31,8 +36,10 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-http-server');
+  grunt.loadNpmTasks('grunt-execute');
 
-  grunt.registerTask('default', ['browserify']);
+  //grunt.registerTask('default', ['browserify']);
+  grunt.registerTask('default', ['execute']);
   grunt.registerTask('run', ['http-server:dev']);
 
 };

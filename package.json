@@ -8,7 +8,8 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-browserify": "~2.0.1",
-    "grunt-http-server": "0.0.4"
+    "grunt-http-server": "0.0.4",
+    "grunt-execute": "~0.1.5"
   },
   "engines": {
     "node": ">=0.8.0"

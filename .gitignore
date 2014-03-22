@@ -10,6 +10,7 @@ lib-cov
 .DS_Store
 
 deploy
+passwords.js
 
 pids
 logs
