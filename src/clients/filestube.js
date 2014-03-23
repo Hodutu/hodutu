@@ -1,34 +1,38 @@
-var jsdom = require('jsdom');
+var debug = require('../helpers/debug');
+var request = require('request');
 
 var Filestube_API = (function() {
+  var sandbox = window.document.getElementById('sandbox');
 
   var url = 'http://www.filestube.to/query.html?q=';
   var pages = 0;
   var currentPage = 1;
   var totalUrls = [];
-  var mainCallback = function(e) { console.log('Sum tink rong', e); };
+  var mainCallback = function(e) { debug.log('Sum tink rong', e); };
 
   var parsePage = function(url, cb) {
-    jsdom.env({
-      url: url,
-      done: function(err, window) {
+    request({
+      url: url
+    },
+    function(err, response, body) {
+      sandbox.innerHTML = body;
         var urls = [];
 
         if (pages === 0) {
-          if (window.document.querySelector('.homePgr')) {
-            pages = window.document.querySelector('.homePgr').querySelectorAll('a').length;
-            console.log('Number of pages:', pages);
+          if (sandbox.querySelector('.homePgr')) {
+            pages = sandbox.querySelector('.homePgr').querySelectorAll('a').length;
+            debug.log('Number of pages:', pages);
           } else {
             pages = 1;
           }
 
         }
 
-        var results = window.document.querySelectorAll('.newresult');
+        var results = sandbox.querySelectorAll('.newresult');
 
         for (var i = 0, j = results.length; i< j; i++) {
           var result = results[i];
-          //console.log(result.querySelector('.resultDescription').textContent);
+          //debug.log(result.querySelector('.resultDescription').textContent);
 
           var hasMoreParts;
           try {
@@ -59,7 +63,7 @@ var Filestube_API = (function() {
 
         cb(urls);
       }
-    });
+    );
   }
 
   var handlePageParsingResults = function(urls) {
@@ -86,26 +90,28 @@ var Filestube_API = (function() {
     }
 
     url = url + term + reqOptions;
-    console.log('Starting link:', url);
+    debug.log('Starting link:', url);
 
     parsePage(url, handlePageParsingResults);
 
   };
 
   var stripFinalLink = function(url, callback) {
-    console.log('Link proceeded: ', url);
+    debug.log('Link proceeded: ', url);
     if (url) {
-      jsdom.env({
-        url: url,
-        done: function(err, window) {
-            if (window.document.querySelector('#copy_paste_links')) {
-              callback(window.document.querySelector('#copy_paste_links').textContent);
+      request({
+        url: url
+      },
+      function(err, response, body) {
+        sandbox.innerHTML = body;
+            if (sandbox.querySelector('#copy_paste_links')) {
+              callback(sandbox.querySelector('#copy_paste_links').textContent);
             } else {
               callback(false);
             }
 
         }
-      })
+      )
     } else {
       callback(false);
     }

@@ -1,23 +1,24 @@
 var filestube = require('./clients/filestube');
 var filebit = require('./clients/filebit');
+var debug = require('./helpers/debug');
 
 var currentLink = 0;
 var globalLinks = [];
 var finalLinks = [];
 var downloadAction = function(body) {
   if (!body) {
-    console.log('Link unactive, trying another one...');
+    debug.log('Link unactive, trying another one...');
     currentLink++;
     stripLinks(globalLinks);
   } else {
-    console.log('Final link:', body);
+    debug.log('Final link:', body);
     finalLinks.push(body);
     episode++;
 
     if (finalLinks.length === maxEpisodes) {
-      console.log('DONE.....');
-      console.log('LINKS:');
-      console.log(finalLinks);
+      debug.log('DONE.....');
+      debug.log('LINKS:');
+      debug.log(finalLinks);
     } else {
       DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
     }
@@ -25,7 +26,7 @@ var downloadAction = function(body) {
 }
 
 var stripLinks = function(linkToStrip) {
-  console.log('CURRENT LINK:', currentLink, linkToStrip);
+  debug.log('CURRENT LINK:', currentLink, linkToStrip);
   filestube.stripFinalLink(linkToStrip[currentLink], function(link) {
     if (link) {
       filebit.login(function(loggedIn) {

@@ -9,7 +9,7 @@ lib-cov
 
 .DS_Store
 
-deploy
+webkitbuilds
 passwords.js
 
 pids

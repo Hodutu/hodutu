@@ -1,5 +1,7 @@
 var credentials = require('../passwords').filebit;
 var request = require('request');
+var debug = require('../helpers/debug');
+
 request = request.defaults({jar: true});
 
 var Filebit_API = (function() {
@@ -21,7 +23,7 @@ var Filebit_API = (function() {
   };
 
   var getLinks = function(link, callback) {
-    console.log('Intermediate link:', link);
+    debug.log('Intermediate link:', link);
     request({
         url: finalUrl,
         method:"POST",

@@ -1,0 +1,22 @@
+body {
+  padding:0;
+  margin:0;
+}
+
+div {
+  padding:0;
+  margin:0;
+  width: 49%;
+  height:100%;
+  border:1px #F0F solid;
+  overflow: hidden;
+}
+
+#output {
+  float: right;
+  overflow-y: scroll;
+}
+
+#sandbox {
+  float: left;
+}
