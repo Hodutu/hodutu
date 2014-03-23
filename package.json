@@ -2,9 +2,15 @@
   "name": "laboo",
   "version": "0.0.1",
   "main": "src/index.html",
+  "window": {
+    "width": 900,
+    "height": 600,
+    "icon": "build/icon_128x128.png"
+  },
   "dependencies": {
     "request": "~2.34.0",
-    "jsdom": "~0.10.3"
+    "jsdom": "~0.10.3",
+    "download": "~0.1.10"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

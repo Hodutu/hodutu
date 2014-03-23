@@ -1,65 +1,63 @@
-var filestube = require('./clients/filestube');
-var filebit = require('./clients/filebit');
-var debug = require('./helpers/debug');
+var config = require('./config');
+var omdb = require('./clients/omdb');
 
-var currentLink = 0;
-var globalLinks = [];
-var finalLinks = [];
-var downloadAction = function(body) {
-  if (!body) {
-    debug.log('Link unactive, trying another one...');
-    currentLink++;
-    stripLinks(globalLinks);
-  } else {
-    debug.log('Final link:', body);
-    finalLinks.push(body);
-    episode++;
+var fs = require('fs');
+var download = require('download');
 
-    if (finalLinks.length === maxEpisodes) {
-      debug.log('DONE.....');
-      debug.log('LINKS:');
-      debug.log(finalLinks);
-    } else {
-      DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
+var shows;
+var edited = false; // Did we change soemthing in the chunk?
+
+var container = window.document.getElementById('container');
+
+var proceedDataChunk = function(chunk, i) {
+  console.log('SCIAGAMY?', !chunk.poster);
+  if (chunk.poster) {
+    addTvShow({poster: chunk.poster});
+    if (i===shows.length-1 && edited) {
+      saveFile(shows);
     }
+  } else {
+    omdb(chunk.imdb, function(resp) {
+      var ee = download(resp.poster, config.covers_dir, { mode: '0777' });
+      ee.on('close', function(){
+        var poster = (config.covers_dir.replace('./src/', '')) + (resp.poster.split('/').pop());
+        chunk.poster = poster;
+        addTvShow({poster: poster});
+        shows[i] = chunk;
+        edited = true;
+
+        if (i===shows.length-1 && edited) {
+          saveFile(shows);
+        }
+
+      });
+    });
   }
+
 };
 
-var stripLinks = function(linkToStrip) {
-  debug.log('CURRENT LINK:', currentLink, linkToStrip);
-  filestube.stripFinalLink(linkToStrip[currentLink], function(link) {
-    if (link) {
-      currentLink = 0;
-      filebit.login(function(loggedIn) {
-        if (loggedIn) {
-          filebit.getLinks(link, downloadAction);
-        }
-      });
+var addTvShow = function(resp) {
+  var img = window.document.createElement('div');
+  img.classList.add('cover');
+  img.style.backgroundImage = 'url(' + resp.poster + ')';
+  container.appendChild(img);
+};
+
+var saveFile = function(data) {
+  fs.writeFile(config.list_file, JSON.stringify(data), function(err) {
+    if(err) {
+        console.log(err);
     } else {
-      currentLink++;
-      stripLinks(globalLinks);
-      //DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
+        console.log("The file was saved!");
     }
   });
 };
 
-var DownloadVideo = function(title) {
-  filestube.getLinks(
-    title,
-    {
-      type: 'mkv'
-    },
-    function(urls) {
-      globalLinks = urls;
-      stripLinks(urls);
-    }
-  );
-};
+fs.readFile(config.list_file, 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
 
-var titles = 'House of Cards S02E';
-var maxEpisodes = 13;
-var episode = 1;
-
-setTimeout(function(){DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));}, 3000);
-
-//DownloadVideo();
+  shows = JSON.parse(data);
+  shows.forEach(proceedDataChunk);
+});

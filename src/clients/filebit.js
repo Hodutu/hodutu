@@ -13,7 +13,7 @@ var Filebit_API = (function() {
 
     request({
         url: loginUrl,
-        method:"POST",
+        method:'POST',
         form: {login: credentials.login, password: credentials.password}
     },
 
@@ -26,7 +26,7 @@ var Filebit_API = (function() {
     debug.log('Intermediate link:', link);
     request({
         url: finalUrl,
-        method:"POST",
+        method:'POST',
         form: {
           a: 'serverNewFile',
           url: link,

@@ -33,12 +33,12 @@ module.exports = function(grunt) {
         root: 'build',
 
         port: 1337,
-        host: "127.0.0.1",
+        host: '127.0.0.1',
 
         cache: 0,
         showDir : true,
         autoIndex: true,
-        defaultExt: "html",
+        defaultExt: 'html',
 
         //wait or not for the process to finish
         runInBackground: false
