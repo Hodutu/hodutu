@@ -13,16 +13,19 @@ var downloadAction = function(body) {
     console.log('Final link:', body);
     finalLinks.push(body);
     episode++;
-    DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
+
     if (finalLinks.length === maxEpisodes) {
       console.log('DONE.....');
       console.log('LINKS:');
       console.log(finalLinks);
+    } else {
+      DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
     }
   }
 }
 
 var stripLinks = function(linkToStrip) {
+  console.log('CURRENT LINK:', currentLink, linkToStrip);
   filestube.stripFinalLink(linkToStrip[currentLink], function(link) {
     if (link) {
       filebit.login(function(loggedIn) {
