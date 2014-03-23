@@ -23,7 +23,7 @@ var downloadAction = function(body) {
       DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
     }
   }
-}
+};
 
 var stripLinks = function(linkToStrip) {
   debug.log('CURRENT LINK:', currentLink, linkToStrip);
@@ -39,8 +39,8 @@ var stripLinks = function(linkToStrip) {
       stripLinks(globalLinks);
       //DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
     }
-  })
-}
+  });
+};
 
 var DownloadVideo = function(title) {
   filestube.getLinks(

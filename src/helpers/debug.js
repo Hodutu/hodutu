@@ -13,9 +13,9 @@ module.exports = (function() {
       return res;
     });
     output.innerHTML += data + '<br/>';
-  }
+  };
 
   return {
     log: log
-  }
+  };
 })();

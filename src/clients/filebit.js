@@ -30,7 +30,7 @@ var Filebit_API = (function() {
         form: {
           a: 'serverNewFile',
           url: link,
-          t: +(new Date)
+          t: +(new Date())
         }
     },
 
@@ -43,7 +43,7 @@ var Filebit_API = (function() {
   return {
     login: login,
     getLinks: getLinks
-  }
+  };
 })();
 
 module.exports = Filebit_API;

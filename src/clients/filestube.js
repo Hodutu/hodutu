@@ -64,7 +64,7 @@ var Filestube_API = (function() {
         cb(urls);
       }
     );
-  }
+  };
 
   var handlePageParsingResults = function(urls) {
     totalUrls = totalUrls.concat(urls);
@@ -111,7 +111,7 @@ var Filestube_API = (function() {
             }
 
         }
-      )
+      );
     } else {
       callback(false);
     }
@@ -120,7 +120,7 @@ var Filestube_API = (function() {
   return {
     getLinks: getLinks,
     stripFinalLink: stripFinalLink
-  }
+  };
 })();
 
 module.exports = Filestube_API;
