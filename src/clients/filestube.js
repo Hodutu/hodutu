@@ -2,7 +2,7 @@ var debug = require('../helpers/debug');
 var request = require('request');
 
 var Filestube_API = (function() {
-  var sandbox = window.document.getElementById('sandbox');
+  var sandbox = window.document.createElement('div');
 
   var url = 'http://www.filestube.to/query.html?q=';
   var pages = 0;

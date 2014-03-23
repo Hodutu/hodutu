@@ -29,6 +29,7 @@ var stripLinks = function(linkToStrip) {
   debug.log('CURRENT LINK:', currentLink, linkToStrip);
   filestube.stripFinalLink(linkToStrip[currentLink], function(link) {
     if (link) {
+      currentLink = 0;
       filebit.login(function(loggedIn) {
         if (loggedIn) {
           filebit.getLinks(link, downloadAction);
@@ -58,6 +59,7 @@ var DownloadVideo = function(title) {
 var titles = 'House of Cards S02E';
 var maxEpisodes = 13;
 var episode = 1;
-DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
+
+setTimeout(function(){DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));}, 3000);
 
 //DownloadVideo();

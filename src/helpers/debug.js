@@ -5,7 +5,7 @@ module.exports = (function() {
     var data = Array.prototype.slice.call(arguments);
     data = data.map(function(v, i) {
       var res;
-      if (v) {
+      if (v !== undefined) {
         res = (i===0 ? '<b>' + v.toString() + '</b> ' : v.toString() + ' ');
       } else {
         res = '';
