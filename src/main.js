@@ -10,19 +10,19 @@ var edited = false; // Did we change soemthing in the chunk?
 var container = window.document.getElementById('container');
 
 var proceedDataChunk = function(chunk, i) {
-  console.log('SCIAGAMY?', !chunk.poster);
+  console.log('SCIAGAMY?', !chunk.poster, chunk.title);
   if (chunk.poster) {
-    addTvShow({poster: chunk.poster});
+    addTvShow({poster: chunk.poster, chunk: chunk});
     if (i===shows.length-1 && edited) {
       saveFile(shows);
     }
   } else {
-    omdb(chunk.imdb, function(resp) {
-      var ee = download(resp.poster, config.covers_dir, { mode: '0777' });
+    omdb(chunk, function(resp) {
+      var ee = download(resp.poster, config.covers_dir);
       ee.on('close', function(){
         var poster = (config.covers_dir.replace('./src/', '')) + (resp.poster.split('/').pop());
         chunk.poster = poster;
-        addTvShow({poster: poster});
+        addTvShow(resp);
         shows[i] = chunk;
         edited = true;
 
@@ -40,6 +40,8 @@ var addTvShow = function(resp) {
   var img = window.document.createElement('div');
   img.classList.add('cover');
   img.style.backgroundImage = 'url(' + resp.poster + ')';
+  if (resp.chunk)
+    img.innerHTML = '<span class="title">' + resp.chunk.title + '</span>';
   container.appendChild(img);
 };
 

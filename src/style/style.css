@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  font-family: Helvetica,Arial,"lucida grande",tahoma,verdana,arial,sans-serif;
 }
 
 .cover {
@@ -9,6 +10,22 @@ body {
   display: inline-block;
   -webkit-transition: -webkit-transform 0.2s;
   margin: 5px;
+  overflow: hidden;
+}
+
+.cover .title {
+  color: #FFF;
+  text-shadow: 1px 1px #000;
+  font-size: 20px;
+  background: #000;
+  width: 100%;
+  display: block;
+  transition: -webkit-transform 0.2s;
+  -webkit-transform: translateY(-100%);
+}
+
+.cover:hover .title {
+  -webkit-transform: translateY(0);
 }
 
 .cover:hover {

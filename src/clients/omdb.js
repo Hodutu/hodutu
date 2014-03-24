@@ -1,18 +1,19 @@
 var request = require('request');
 
-var OMDBClient = function(id, callback) {
+var OMDBClient = function(chunk, callback) {
     var url = 'http://www.omdbapi.com/?i=';
 
     request({
-      url: url + id
+      url: url + chunk.imdb
     },
     function(err, response, body) {
       var response = JSON.parse(body);
       var resp = {
         'episodeLength' : parseInt(response.Runtime, 10),
-        'poster' : response.Poster
+        'poster' : response.Poster,
+        'chunk' : chunk
       }
-      callback(resp, id);
+      callback(resp);
     });
 };
 
