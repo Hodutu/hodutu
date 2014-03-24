@@ -8,9 +8,18 @@ body {
   height: 200px;
   background-size: cover;
   display: inline-block;
-  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
   margin: 5px;
   overflow: hidden;
+  position: relative;
+}
+
+.cover.finished {
+  opacity: 0.7;
+}
+
+.cover.attention {
+  box-shadow: 0 0 15px red;
 }
 
 .cover .title {
@@ -24,12 +33,27 @@ body {
   -webkit-transform: translateY(-100%);
 }
 
+.cover .status {
+  color: #FFF;
+  text-shadow: 1px 1px #000;
+  font-size: 20px;
+  background: #000;
+  width: 100%;
+  display: block;
+  position:absolute;
+  bottom: 0;
+  transition: -webkit-transform 0.2s;
+  -webkit-transform: translateY(100%);
+}
+
+.cover:hover .status,
 .cover:hover .title {
   -webkit-transform: translateY(0);
 }
 
 .cover:hover {
   -webkit-transform: scale(1.1);
+  opacity: 1;
 }
 
 .cover.special {

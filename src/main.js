@@ -41,7 +41,7 @@ var addTvShow = function(resp) {
   img.classList.add('cover');
   img.style.backgroundImage = 'url(' + resp.poster + ')';
   if (resp.chunk)
-    img.innerHTML = '<span class="title">' + resp.chunk.title + '</span>';
+    img.innerHTML = '<span class="title">' + resp.chunk.title + '</span><span class="status">STATUS</span>';
   container.appendChild(img);
 };
 
