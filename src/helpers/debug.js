@@ -1,8 +1,6 @@
 module.exports = (function() {
   var useDefaultConsole = false;
 
-  var output = window.document.getElementById('output');
-
   var log = function() {
     if (useDefaultConsole) {
       console.log.apply(console, arguments);
@@ -17,7 +15,7 @@ module.exports = (function() {
         }
         return res;
       });
-      output.innerHTML += data + '<br/>';
+      window.document.body.innerHTML += data + '<br/>';
     }
   };
 

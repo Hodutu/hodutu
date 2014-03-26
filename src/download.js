@@ -9,27 +9,30 @@ var downloadAction = function(body) {
   if (!body) {
     debug.log('Link unactive, trying another one...');
     currentLink++;
+    debug.log('CURRENT LYNK:', currentLink);
     stripLinks(globalLinks);
   } else {
+    currentLink = 0;
     debug.log('Final link:', body);
     finalLinks.push(body);
     //episode++;
 
-    //if (finalLinks.length === maxEpisodes) {
+    if (episode === 2) {//(finalLinks.length === 19) {
       debug.log('DONE.....');
       debug.log('LINKS:');
       debug.log(finalLinks);
-    // } else {
-    //   DownloadVideo(titles + (episode < 10 ? '0'+episode : episode));
-    // }
+      } else {
+        episode++
+        DownloadVideo(titles+episode);
+      }
   }
 };
 
 var stripLinks = function(linkToStrip) {
   debug.log('CURRENT LINK:', currentLink, linkToStrip);
   filestube.stripFinalLink(linkToStrip[currentLink], function(link) {
+    debug.log('LINK AFTER STRIPING:', link);
     if (link) {
-      currentLink = 0;
       filebit.login(function(loggedIn) {
         if (loggedIn) {
           filebit.getLinks(link, downloadAction);
@@ -56,10 +59,10 @@ var DownloadVideo = function(title) {
   );
 };
 
-var titles = 'House Of Cards S02E09';
+var titles = 'House of Cards S02E';
 // var maxEpisodes = 9;
-// var episode = 6;
+var episode = 1;
 
-DownloadVideo(titles);
+DownloadVideo(titles + episode);
 
 //DownloadVideo();
