@@ -10,7 +10,20 @@ input.addEventListener('input', function() {
     listDb.find({ title: new RegExp(text, 'ig') }, function (err, docs) {
       //console.log('E', docs);
       docs.forEach(function(element) {
-        autocomplete.innerHTML += "<li>" + element.title + "</li>";
+        var result = document.createElement('li');
+        var poster = document.createElement('div');
+        var title = document.createElement('div');
+
+        poster.classList.add('poster');
+        poster.style.backgroundImage = "url(" + element.poster + ")";
+
+        title.innerHTML = element.title;
+        title.classList.add('title');
+
+        result.appendChild(poster);
+        result.appendChild(title);
+
+        autocomplete.appendChild(result);
       });
     });
   }
