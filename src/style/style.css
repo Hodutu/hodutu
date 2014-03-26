@@ -4,3 +4,17 @@ input#search {
   border: 2px solid black;
   font-size: 18px;
 }
+
+#autocomplete li {
+  display: block;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 250px;
+  border-bottom: none;
+}
+
+#autocomplete li:last-child {
+  border-bottom: 1px solid #ccc;
+}
