@@ -18,3 +18,7 @@ input#search {
 #autocomplete li:last-child {
   border-bottom: 1px solid #ccc;
 }
+
+#autocomplete li:hover {
+  border-color: #333;
+}
