@@ -22,6 +22,12 @@ input.addEventListener('input', function() {
 
         result.appendChild(poster);
         result.appendChild(title);
+        result.dataset.title = element.title;
+
+        result.addEventListener('click', function(event) {
+          var ttl = event.target.dataset.title ||
+                    event.target.parentNode.dataset.title;
+        });
 
         autocomplete.appendChild(result);
       });
