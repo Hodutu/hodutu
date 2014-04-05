@@ -8,6 +8,9 @@ module.exports = function(grunt) {
       },
       generate_list: {
         command : 'node tools/tvshow-list.js'
+      },
+      dependencies: {
+        /* maybe in the future we will need to copy also some dependencies here */
       }
     },
     nodewebkit: {
