@@ -28,7 +28,7 @@ input.addEventListener('input', function() {
           var ttl = event.target.dataset.title ||
                     event.target.parentNode.dataset.title;
 
-          window.location = 'show-details.html?' + ttl;
+          window.location = 'show-details.html#' + ttl;
         });
 
         autocomplete.appendChild(result);
