@@ -37,7 +37,8 @@ input#search {
 }
 
 #autocomplete li:hover {
-  border-color: #333;
+  background-color: #CCC;
+  cursor: pointer;
 }
 
 #autocomplete li>div.poster {
