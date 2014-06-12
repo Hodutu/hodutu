@@ -1,11 +1,19 @@
-<html ng-app>
-<head>
-<meta charset='utf-8'>
-<title>Laboo</title>
-<link href='style/style.css' rel='stylesheet' type='text/css'/>
-</head>
-<body>
-  <div id="container"></div>
-  <script src='download.js'></script>
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HODUTU</title>
+  </head>
+  <body>
+    <h1>
+      HODUTU
+    </h1>
+    <script>
+    var Nedb = require('nedb'),
+        planets = new Nedb({ filename: 'database.db', autoload: true });
+              planets.find({ satellites: 1 }, function (err, docs) {
+                document.body.innerHTML = JSON.stringify(docs) + '<br/>' + docs[0].yo.e;
+                // docs is an array containing Earth and Mars
+              });
+    </script>
+  </body>
 </html>
