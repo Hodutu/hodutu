@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -13,12 +15,15 @@ module.exports = function(grunt) {
         command : 'node tools/json-to-nedb.js'
       },
       dependencies: {
-        /* maybe in the future we will need to copy also some dependencies here */
+        /*
+         * maybe in the future we will need
+         * to copy also some dependencies here
+         */
       }
     },
     nodewebkit: {
       options: {
-          build_dir: './webkitbuilds', // Where the build version of my node-webkit app is saved
+          build_dir: './webkitbuilds',
           mac: true, // We want to build it for mac
           win: false, // We want to build it for win
           linux32: false, // We don't need linux32
