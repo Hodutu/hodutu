@@ -9,5 +9,5 @@ userList.insert(userJsonData, function(err){
     return;
   }
 
-  console.log('database generated');
+  console.log('Database generated...');
 });
