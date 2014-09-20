@@ -1,9 +1,12 @@
+'use strict';
 var async = require('async');
 var Nedb = require('nedb');
 
 var wikiList = require('./wiki-list');
 var omdbApi = require('./omdb');
-var tvShowList = new Nedb({ filename: 'src/data/tv_show_list.db', autoload: true });
+var tvShowList = new Nedb(
+  { filename: 'src/data/tv_show_list.db', autoload: true }
+);
 var finalList = [];
 
 wikiList(function(list) {
