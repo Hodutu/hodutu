@@ -9,6 +9,9 @@ module.exports = function(grunt) {
       generate_list: {
         command : 'node tools/tvshow-list.js'
       },
+      json2nedb: {
+        command : 'node tools/json-to-nedb.js'
+      },
       dependencies: {
         /* maybe in the future we will need to copy also some dependencies here */
       }
@@ -33,5 +36,6 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['nodewebkit']);
 
   grunt.registerTask('generate-list', ['exec:generate_list']);
+  grunt.registerTask('json-to-nedb', ['exec:json2nedb']);
 
 };
