@@ -18,5 +18,8 @@
   },
   "dependencies": {
     "nedb": "~0.10.5"
+  },
+  "scripts": {
+    "lint": "node node_modules/jshint/bin/jshint ."
   }
 }
