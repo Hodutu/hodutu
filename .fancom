@@ -8,25 +8,25 @@
 # https://github.com/michalbe/fancom
 
 # Name of the repository, default: name of the current repo
-reponame="tv-series"
+#reponame="tv-series"
 
 # Suffix added to the temporary created, developer's branch, default: 'temp'
 #devsuffix="temp"
 
 # Do we want to push to the temporary branch?
-pushtotemp=0
+#pushtotemp=0
 
 # After pushing to the repo, what branch needs to be compared?
-comparewith="gh-pages"
+#comparewith="gh-pages"
 
 # Set to `1` to add random emoji file to the commit message, default: no
 emoji=1
 
 # Add all the changes made in the repo to the commit, default: no
-addall=1
+#addall=1
 
 # Prefix added to the commit message, default: [REPONAME]
-prefix="tv"
+#prefix="tv"
 
 # Add branch name to the prefix of the commit, default: no
 branchincommit=0

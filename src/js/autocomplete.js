@@ -1,3 +1,7 @@
+'use strict';
+/* global document */
+/* global window */
+
 var listDb = require('./js/tvshow-list');
 
 var input = document.getElementById('search');
@@ -15,7 +19,7 @@ input.addEventListener('input', function() {
         var title = document.createElement('div');
 
         poster.classList.add('poster');
-        poster.style.backgroundImage = "url(" + element.poster + ")";
+        poster.style.backgroundImage = 'url(' + element.poster + ')';
 
         title.innerHTML = element.title;
         title.classList.add('title');

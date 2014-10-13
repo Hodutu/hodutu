@@ -1,7 +1,9 @@
+'use strict';
+
 var request = require('request');
-var apiCall = "http://en.wikipedia.org/w/api.php?format=json&action=" +
-              "query&titles=List_of_television_programs_by_name&prop" +
-              "=revisions&rvprop=content";
+var apiCall = 'http://en.wikipedia.org/w/api.php?format=json&action=' +
+              'query&titles=List_of_television_programs_by_name&prop' +
+              '=revisions&rvprop=content';
 
 var newList = [];
 var parseWikiResponse = function(jsonData, cb) {
@@ -35,9 +37,9 @@ var parseLine = function(line) {
       var nameSplit = line.split('|');
 
       // if no '|', the array has just one element
-      var show = {
+      show = {
         title: nameSplit[0]
-      }
+      };
 
       // if '|' was there, then we have 2 elements
       if (nameSplit.length > 1) {
@@ -56,7 +58,7 @@ var parseLine = function(line) {
         'Since day 1 the universe is against me.',
         'Nah, I\'ll nail it anyway.'
       );
-      console.log('ERROR:', e)
+      console.log('ERROR:', e);
       console.log('TV SHOW:', line);
     }
   }
@@ -68,4 +70,4 @@ module.exports = function(cb) {
       parseWikiResponse(body, cb); // Print the google web page.
     }
   });
-}
+};

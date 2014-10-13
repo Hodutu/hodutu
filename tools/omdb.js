@@ -1,3 +1,5 @@
+'use strict';
+
 var request = require('request');
 
 var omdbApi = 'http://www.omdbapi.com/?t=';

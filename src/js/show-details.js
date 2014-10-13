@@ -1,3 +1,7 @@
+'use strict';
+/* global document */
+/* global window */
+
 var showDetails = (function(){
   var showTitle;
   var showTitleDom;
@@ -8,11 +12,11 @@ var showDetails = (function(){
     showTitle = showTitle.substr(1, showTitle.length);
 
     showTitleDom.innerHTML = showTitle;
-  }
+  };
 
   return {
     init: init
-  }
+  };
 })();
 
 showDetails.init();
