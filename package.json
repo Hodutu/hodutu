@@ -1,0 +1,15 @@
+{
+  "name": "hodutu",
+  "version": "0.0.1",
+  "author": "Michal Budzynski <michal@virtualdesign.pl>",
+  "repository": "git@github.com:michalbe/hodutu.git",
+  "devDependencies": {
+    "assert": "^1.1.2",
+    "jshint": "^2.5.10",
+    "precommit-hook": "^1.0.7"
+  },
+  "scripts": {
+    "test": "node tests/hodutu-tests.js",
+    "lint": "node node_modules/jshint/bin/jshint ."
+  }
+}
